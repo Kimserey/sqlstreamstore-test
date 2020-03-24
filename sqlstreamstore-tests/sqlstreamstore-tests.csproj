@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <RootNamespace>sqlstreamstore_tests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="SqlStreamStore" Version="1.1.3" />
+      <PackageReference Include="SqlStreamStore.MsSql" Version="1.1.3" />
+    </ItemGroup>
+
+</Project>
