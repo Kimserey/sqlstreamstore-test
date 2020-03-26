@@ -13,29 +13,59 @@ using sqlstreamstore_tests;
 
 namespace projection
 {
+    public class Message
+    {
+        public Guid Id { get; set; }
+        public string StreamId { get; set; }
+        public long StreamVersion { get; set; }
+        public long Position { get; set; }
+        public DateTime CreatedUtc { get; set; }
+        public string Type { get; set; }
+        public string Content { get; set; }
+    }
+
+    public interface IConsumer<out TRaw>
+    {
+        void Start(Func<TRaw, Task> handle);
+    }
+
+    public class LedgerEntry
+    {
+        public string Name { get; set; }
+        public long Position { get; set; }
+    }
+
     /// CREATE TABLE Ledger (
     ///     Name varchar(255),
     ///     Position bigint,
     ///     PRIMARY KEY (Name)
     /// )
-    public class Committer
+    public class SqlStreamStoreConsumer : IConsumer<Message>
     {
-        public class LedgerEntry
-        {
-            public string Name { get; set; }
-            public long Position { get; set; }
-        }
-
         private readonly string _name;
         private readonly string _connectionString;
+        private readonly MsSqlStreamStore _store;
+        private Func<Message, Task> _handle;
 
-        public Committer(string name, string connectionString)
+        public SqlStreamStoreConsumer(string name, string connectionString)
         {
             _name = name;
             _connectionString = connectionString;
+            _store =  new MsSqlStreamStore(new MsSqlStreamStoreSettings(connectionString));
         }
 
-        public long Init()
+        public void CommitPosition(long position)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Execute(
+                    "UPDATE Ledger SET Position = @position WHERE Name = @name;",
+                    new { position, name = _name }
+                );
+            }
+        }
+
+        public long GetInitialPosition()
         {
             long position = 0;
 
@@ -61,55 +91,29 @@ namespace projection
             return position;
         }
 
-        public void CommitPosition(long position)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                connection.Execute(
-                    "UPDATE Ledger SET Position = @position WHERE Name = @name;",
-                    new { position, name = _name }
-                );
-            }
-        }
-    }
-
-    public class Projection
-    {
-        private readonly MsSqlStreamStore _store;
-        private readonly Committer _committer;
-
-        public Projection()
-        {
-            var connString = "Server=localhost;Database=eqx;User Id=sa;Password=...;";
-            _store =  new MsSqlStreamStore(new MsSqlStreamStoreSettings(connString));
-            _committer = new Committer("MyProjection", connString);
-        }
-
-        private async Task StreamMessageReceived(IAllStreamSubscription subscription, StreamMessage streamMessage,
-            CancellationToken cancellationToken)
+        private async Task StreamMessageReceived(IAllStreamSubscription subscription, StreamMessage streamMessage, CancellationToken cancellationToken)
         {
             try
             {
                 var message = await streamMessage.GetJsonData(cancellationToken);
 
-                Console.WriteLine(
-                    $"Start processing: " +
-                    $"type:{streamMessage.Type}, " +
-                    $"positon:{streamMessage.Position}, " +
-                    $"stream version:{streamMessage.StreamVersion}, " +
-                    $"{message}");
+                await _handle(new Message
+                {
+                    Id = streamMessage.MessageId,
+                    Position = streamMessage.Position,
+                    Type = streamMessage.Type,
+                    CreatedUtc = streamMessage.CreatedUtc,
+                    StreamId = streamMessage.StreamId,
+                    StreamVersion =  streamMessage.StreamVersion,
+                    Content = message
+                });
 
-                Thread.Sleep(1000);
-
-                Console.WriteLine("Done");
-
-                _committer.CommitPosition(streamMessage.Position);
+                CommitPosition(streamMessage.Position);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
         }
 
         private void HasCaughtUp(bool hasCaughtUp)
@@ -117,10 +121,15 @@ namespace projection
             Console.WriteLine($"Has caught up {hasCaughtUp}");
         }
 
-        public void Start()
+        public void Start(Func<Message, Task> handle)
         {
-            var position = _committer.Init();
-            _store.SubscribeToAll(position, StreamMessageReceived, hasCaughtUp: HasCaughtUp);
+            _handle = handle;
+
+            _store.SubscribeToAll(
+                GetInitialPosition(),
+                StreamMessageReceived,
+                hasCaughtUp: HasCaughtUp
+            );
         }
     }
 
@@ -128,8 +137,19 @@ namespace projection
     {
         static void Main(string[] args)
         {
-            var proj = new Projection();
-            proj.Start();
+            IConsumer<Message> proj = new SqlStreamStoreConsumer("MyProjection2", "Server=localhost;Database=eqx;User Id=sa;Password=...");
+            proj.Start(msg =>
+            {
+                Console.WriteLine(
+                    $"Start processing: " +
+                    $"type:{msg.Type}, " +
+                    $"positon:{msg.Position}, " +
+                    $"stream version:{msg.StreamVersion}, " +
+                    $"{msg.Content}"
+                );
+
+                return Task.CompletedTask;
+            });
 
             Console.WriteLine("Press any key to stop.");
             Console.ReadLine();
