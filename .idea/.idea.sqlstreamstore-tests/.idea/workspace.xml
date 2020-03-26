@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b06166f3-778f-4031-927a-10a6612c3638" name="Default Changelist" comment="" />
+    <list default="true" id="b06166f3-778f-4031-927a-10a6612c3638" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sqlstreamstore-tests/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sqlstreamstore-tests/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projection/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/projection/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projection/projection.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/projection/projection.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlstreamstore-tests/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sqlstreamstore-tests/Program.cs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EE6221-18EF-4892-9574-3D5B973B0B85/98/6181b709/IReadonlyStreamStore.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9F46F9E7-682A-465F-A27D-A79B0628C268/25/8b608087/MsSqlStreamStore.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/sqlstreamstore-tests/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EE6221-18EF-4892-9574-3D5B973B0B85/c2/0e967301/InMemoryStreamStore.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EE6221-18EF-4892-9574-3D5B973B0B85/23/58391bdb/ReadonlyStreamStoreBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B1433F83-3E94-4B62-B641-56CEE01AE659/af/14ed4c8a/SqlConnection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/sqlstreamstore-tests/Account.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/projection/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/sqlstreamstore-tests/BalanceProjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9F46F9E7-682A-465F-A27D-A79B0628C268/2b/ad58e007/MsSqlStreamStoreSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/sqlstreamstore-tests/Events.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EE6221-18EF-4892-9574-3D5B973B0B85/b9/cb2f1531/HasCaughtUp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EE6221-18EF-4892-9574-3D5B973B0B85/10/37f690ad/StreamMessage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/sqlstreamstore-tests/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/projection/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EE6221-18EF-4892-9574-3D5B973B0B85/a1/cd5006e6/AllStreamMessageReceived.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9F46F9E7-682A-465F-A27D-A79B0628C268/2b/ad58e007/MsSqlStreamStoreSettings.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/sqlstreamstore-tests/Account.cs" />
+        <option value="$PROJECT_DIR$/sqlstreamstore-tests/Events.cs" />
+        <option value="$PROJECT_DIR$/sqlstreamstore-tests/BalanceProjection.cs" />
         <option value="$PROJECT_DIR$/sqlstreamstore-tests/Program.cs" />
         <option value="$PROJECT_DIR$/projection/Program.cs" />
-        <option value="$PROJECT_DIR$/sqlstreamstore-tests/BalanceProjection.cs" />
-        <option value="$PROJECT_DIR$/sqlstreamstore-tests/Events.cs" />
       </list>
     </option>
   </component>
@@ -35,6 +48,7 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -122,6 +136,8 @@
       <updated>1584977085231</updated>
       <workItem from="1584977086533" duration="3705000" />
       <workItem from="1585068827108" duration="33000" />
+      <workItem from="1585151583153" duration="5158000" />
+      <workItem from="1585174985199" duration="3518000" />
     </task>
     <servers />
   </component>
@@ -130,6 +146,19 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
   </component>
@@ -142,5 +171,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="DotNetProject">
+        <watch expression="ex" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
