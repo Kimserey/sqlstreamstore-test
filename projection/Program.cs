@@ -13,7 +13,11 @@ using sqlstreamstore_tests;
 
 namespace projection
 {
-    /// CREATE TABLE Ledger (Name varchar(255), Position bigint, PRIMARY KEY (Name))
+    /// CREATE TABLE Ledger (
+    ///     Name varchar(255),
+    ///     Position bigint,
+    ///     PRIMARY KEY (Name)
+    /// )
     public class Committer
     {
         public class LedgerEntry
@@ -33,7 +37,7 @@ namespace projection
 
         public long Init()
         {
-            long position = -1;
+            long position = 0;
 
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -43,7 +47,7 @@ namespace projection
                             INSERT INTO Ledger (Name, Position)
                             VALUES (@name, @position)
                     ",
-                    new { name = _name, position = -1 }
+                    new { name = _name, position = 0 }
                 );
 
                 position = connection
@@ -87,9 +91,16 @@ namespace projection
             try
             {
                 var message = await streamMessage.GetJsonData(cancellationToken);
+
                 Console.WriteLine(
-                    $"Start processing: type:{streamMessage.Type}, positon:{streamMessage.Position}, stream version:{streamMessage.StreamVersion}, {message}");
+                    $"Start processing: " +
+                    $"type:{streamMessage.Type}, " +
+                    $"positon:{streamMessage.Position}, " +
+                    $"stream version:{streamMessage.StreamVersion}, " +
+                    $"{message}");
+
                 Thread.Sleep(1000);
+
                 Console.WriteLine("Done");
 
                 _committer.CommitPosition(streamMessage.Position);

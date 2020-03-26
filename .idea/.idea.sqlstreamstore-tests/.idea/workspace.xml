@@ -4,8 +4,6 @@
     <list default="true" id="b06166f3-778f-4031-927a-10a6612c3638" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.sqlstreamstore-tests/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sqlstreamstore-tests/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projection/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/projection/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projection/projection.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/projection/projection.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlstreamstore-tests/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sqlstreamstore-tests/Program.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +135,7 @@
       <workItem from="1584977086533" duration="3705000" />
       <workItem from="1585068827108" duration="33000" />
       <workItem from="1585151583153" duration="5158000" />
-      <workItem from="1585174985199" duration="3518000" />
+      <workItem from="1585174985199" duration="3987000" />
     </task>
     <servers />
   </component>
